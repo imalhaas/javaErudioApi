@@ -1,16 +1,32 @@
 package Model;
 
+import com.sun.istack.NotNull;
+import org.hibernate.annotations.GeneratorType;
+
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Objects;
 
+@Entity
+@Table(name = "person")
 public class Person implements Serializable {
 
     private static final long serialversion = 1l;
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column(name = "first_name", length = 80)
+    @NotNull
     private String firstName;
+    @Column(name = "last_name", length = 80)
+    @NotNull
     private String lastName;
+    @Column(length = 100)
+    @NotNull
     private String address;
+    @Column(length = 6)
+    @NotNull
     private String gender;
 
     public Person() {}
